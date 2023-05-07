@@ -288,7 +288,10 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         /**
          * Set the value of an element at a certain index in the list.
          * <p>
-         * TODO: javadoc comments
+         * @param index: sets index to set an element
+         * @param element: elements to be added
+         * @return old data
+         *
          */
         @Override
         public T set(int index, T element)
