@@ -240,7 +240,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          */
         private Node getNth(int index) {
             if (index < 0 || index >= nelems) {
-                throw new IndexOutOfBoundsException("Index is out of range.");
+                throw new IndexOutOfBoundsException();
             }
             Node current = head.next;
             for (int i = 0; i < index; i++) {
@@ -270,7 +270,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         @Override
         public T remove(int index) throws IndexOutOfBoundsException {
             if (index < 0 || index >= nelems) {
-                throw new IndexOutOfBoundsException("Index is out of range.");
+                throw new IndexOutOfBoundsException();
             }
 
             Node nodeToRemove = getNth(index);

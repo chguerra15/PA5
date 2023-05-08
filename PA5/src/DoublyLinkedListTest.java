@@ -15,6 +15,16 @@ class DoublyLinkedListTest {
         list2.add(1);
         list2.add(2);
         assertEquals(2, list2.get(1));
+        assertThrows(NullPointerException.class, () -> {
+            list2.add(1, null);
+            list2.add(1, null);
+            list2.add(1, null);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.get(3);
+            list2.get(5);
+            list2.get(-1);
+        });
 
     }
 
@@ -30,6 +40,16 @@ class DoublyLinkedListTest {
         assertEquals("banana", list.get(2));
         assertEquals("orange", list.get(3));
         assertEquals(4, list.size());
+        assertThrows(NullPointerException.class, () -> {
+            list.add(1, null);
+            list.add(1, null);
+            list.add(1, null);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.get(3);
+            list.get(5);
+            list.get(-1);
+        });
     }
 
     @Test
@@ -71,6 +91,8 @@ class DoublyLinkedListTest {
         assertEquals("banana", list.get(1));
         assertEquals("papaya", list.get(2));
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(3));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(5));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(6));
     }
 
     @Test
@@ -99,6 +121,10 @@ class DoublyLinkedListTest {
         assertEquals("apple", list.get(0));
         assertEquals("orange", list.get(1));
         assertEquals(2, list.size());
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(3));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(6));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(7));
+
     }
 
     @Test
@@ -111,6 +137,9 @@ class DoublyLinkedListTest {
         assertEquals("apple", list.get(0));
         assertEquals("orange", list.get(1));
         assertEquals(2, list.size());
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(3, "hry"));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(5, "jg"));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(6, "jg"));
     }
 
     @Test
