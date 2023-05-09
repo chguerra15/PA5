@@ -1,4 +1,4 @@
-public class MyStack<T> implements MyStackInterface<T>{
+public class MyStack<T> implements MyStackInterface<T> {
     public DoublyLinkedList<T> stack;
 
     public MyStack() {
@@ -17,20 +17,23 @@ public class MyStack<T> implements MyStackInterface<T>{
         if (data == null) {
             throw new IllegalArgumentException();
         }
-        stack.set(0, data);
+        stack.add(data);
     }
 
     public T pop() {
-        if (stack.isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
-        return stack.remove(0);
+        T removedData = stack.get(stack.size() - 1);
+        stack.remove(removedData);
+        return removedData;
     }
 
     public T peek() {
-        if (stack.isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
-        return stack.get(0);
+        return stack.get(stack.size() - 1);
     }
 }
+

@@ -171,6 +171,26 @@ class DoublyLinkedListTest {
 
     }
 
+    @Test
+    void testClear(){
+        DoublyLinkedList<Character> list = new DoublyLinkedList<>();
+        list.add('C');
+        list.add('H');
+        list.add('R');
+        list.add('I');
+        list.add('S');
+        assertTrue(list.size() != 0);
+        list.clear();
+        assertTrue(list.size() == 0);
+        DoublyLinkedList<String> list2 = new DoublyLinkedList<>();
+        list2.add("apple");
+        assertEquals("apple", list2.get(0));
+        list2.clear();
+        assertEquals(0, list.size());
+
+
+    }
+
 }
 
 
