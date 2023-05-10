@@ -43,6 +43,9 @@ public class WebBrowserTest {
         browser.previousPage();
         browser.nextPage();
         assertEquals("instagram.com", browser.getCurrentPage());
+        WebBrowser history = new WebBrowser();
+        history.openNewPage("facebook.com");
+        assertThrows(IllegalStateException.class, () -> history.nextPage());
     }
 
     @Test

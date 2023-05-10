@@ -56,7 +56,7 @@ public class WebBrowser {
      */
     public void previousPage() {
         if (prev.isEmpty()) {
-            throw new IllegalStateException("No previous page found");
+            throw new IllegalStateException();
         }
         next.push(currentPage);
         currentPage = prev.pop();

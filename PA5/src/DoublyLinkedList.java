@@ -353,16 +353,84 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * TODO: javadoc comments
          */
         public void removeMultipleOf(int base) {
-            // TODO: complete implementation
+            if (base < 1) {
+                throw new IllegalArgumentException("Base must be greater than or equal to 1.");
+            }
+
+            Node current = head;
+            int index = 0;
+
+            while (current != null) {
+                if (index % base == 0) {
+                    Node temp = current;
+                    current = current.next;
+                    remove(temp);
+                } else {
+                    current = current.next;
+                }
+
+                index++;
+            }
         }
 
-        /**
-         * Swap the nodes between index [0, splitIndex] of two lists
-         * <p>
-         * TODO: javadoc comments
-         */
-        public void swapSegment(DoublyLinkedList other, int splitIndex) {
-            // TODO: complete implementation
+    /**
+     * Swap the nodes between index [0, splitIndex] of two lists
+     *
+     * @param other the other list to swap with
+     * @param splitIndex the index to split the lists
+     * @throws IllegalArgumentException if the other list is null
+     * @throws IndexOutOfBoundsException if the split index is out of bounds
+     */
+    public void swapSegment(DoublyLinkedList other, int splitIndex) {
+        if (other == null) {
+            throw new IllegalArgumentException("Other list cannot be null.");
         }
 
+        if (splitIndex < 0 || splitIndex >= nelems || splitIndex >= other.size()) {
+            throw new IndexOutOfBoundsException("Split index out of bounds.");
+        }
+
+        // Special case: splitIndex is at the end of this list
+        if (splitIndex == nelems - 1) {
+            Node temp = head;
+            head = other.head;
+            other.head = temp;
+            temp = tail;
+            tail = other.tail;
+            other.tail = temp;
+            int size = nelems;
+            nelems = other.nelems;
+            other.nelems = size;
+            return;
+        }
+
+        Node current1 = head;
+        Node current2 = other.head;
+        int index = 0;
+
+        while (index < splitIndex) {
+            current1 = current1.next;
+            current2 = current2.next;
+            index++;
+        }
+
+        Node temp = current1.next;
+        current1.next = current2.next;
+        current2.next = temp;
+        temp = current1.next.prev;
+        current1.next.prev = current2.next.prev;
+        current2.next.prev = temp;
+
+        int size = nelems - (splitIndex + 1);
+        nelems -= size;
+        other.nelems += size;
+
+        temp = tail;
+        tail = other.tail;
+        other.tail = temp;
     }
+
+
+
+
+}

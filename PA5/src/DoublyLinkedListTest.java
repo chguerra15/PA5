@@ -191,6 +191,47 @@ class DoublyLinkedListTest {
 
     }
 
+    @Test
+    public void testRemoveMultipleOf() {
+        DoublyLinkedList list = new DoublyLinkedList();
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        list.removeMultipleOf(3);
+        System.out.println(list);
+        DoublyLinkedList list2 = new DoublyLinkedList();
+        for (int i = 0; i < 10; i++) {
+            list2.add(i);
+        }
+        list2.removeMultipleOf(1);
+        System.out.println(list2);
+
+
+    }
+
+    @Test
+    public void testSwapSegment() {
+        DoublyLinkedList list1 = new DoublyLinkedList();
+        DoublyLinkedList list2 = new DoublyLinkedList();
+        list1.add(0);
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        list1.add(4);
+        list2.add(5);
+        list2.add(6);
+        list2.add(7);
+        list2.add(8);
+        list2.add(9);
+        list1.swapSegment(list2, 2);
+        assertEquals("[(head) -> 0 -> 1 -> 7 -> 8 -> 9 -> (tail)]", list1.toString());
+        assertEquals("[(head) -> 5 -> 6 -> 2 -> 3 -> 4 -> (tail)]", list2.toString());
+        list1.swapSegment(list2, 2);
+        assertEquals("[(head) -> 5 -> 6 -> 2 -> 3 -> 4 -> (tail)]", list1.toString());
+        assertEquals("[(head) -> 0 -> 1 -> 7 -> 8 -> 9 -> (tail)]", list2.toString());
+    }
+
+
 }
 
 
