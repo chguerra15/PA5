@@ -163,7 +163,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          *
          *  * @param index the index at which the specified element is to be inserted
          *  * @param element the data to be inserted into the list
-         *  * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index > size())
+         *  * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index
+         *  > size())
          *  * @throws NullPointerException if the specified element is null
          *  */
         @Override
@@ -239,7 +240,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * than or equal to the size of the list.
          */
         private Node getNth(int index) {
-            if (index < 0 || index >= nelems) {
+            if (index < 0 || index > nelems) {
                 throw new IndexOutOfBoundsException();
             }
             Node current = head.next;
@@ -269,7 +270,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          */
         @Override
         public T remove(int index) throws IndexOutOfBoundsException {
-            if (index < 0 || index >= nelems) {
+            if (index < 0 || index > nelems) {
                 throw new IndexOutOfBoundsException();
             }
 

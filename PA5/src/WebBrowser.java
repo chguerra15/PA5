@@ -47,6 +47,7 @@ public class WebBrowser {
         currentPage = newLink;
         next = new MyStack<String>();
         history.add(currentPage);
+
     }
 
     /**

@@ -9,8 +9,8 @@ import java.util.AbstractList;
 /**
  * ArrayList Implementation
  *
- * @author TODO
- * @since TODO
+ * @author Christian Guerra
+ * @since May 17th, 2023
  */
 public class MyArrayList<T> extends AbstractList<T> {
 
@@ -18,7 +18,7 @@ public class MyArrayList<T> extends AbstractList<T> {
     private T  [ ] arrList;
 
     /**
-     * TODO
+     * Establishes MyArraylist constructors
      */
     public MyArrayList() {
 
@@ -60,8 +60,14 @@ public class MyArrayList<T> extends AbstractList<T> {
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
         }
-        if (size() == arrList.length) {
-            T[] temp = (T[]) new Object[2 * arrList.length];
+        if (size() == arrList.length ) {
+            T[] temp;
+            if(size() == 0){
+                temp = (T[]) new Object[arrList.length + 1];
+            }
+            else{
+                temp = (T[]) new Object[2 * arrList.length];
+            }
             System.arraycopy(arrList, 0, temp, 0, arrList.length);
             arrList = temp;
         }

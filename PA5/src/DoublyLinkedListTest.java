@@ -152,6 +152,13 @@ class DoublyLinkedListTest {
         assertEquals(2, list.size());
         list.add("papaya");
         assertEquals(3, list.size());
+        list.add("fruta");
+        assertEquals(4, list.size());
+        list.remove(0);
+        list.remove(3);
+        assertEquals(2, list.size());
+        list.add(0, "watermelon");
+        assertEquals(3, list.size());
     }
 
     @Test
@@ -229,6 +236,16 @@ class DoublyLinkedListTest {
         list1.swapSegment(list2, 2);
         assertEquals("[(head) -> 5 -> 6 -> 2 -> 3 -> 4 -> (tail)]", list1.toString());
         assertEquals("[(head) -> 0 -> 1 -> 7 -> 8 -> 9 -> (tail)]", list2.toString());
+    }
+
+
+    @Test
+    public void newtest4(){
+        DoublyLinkedList list1 = new DoublyLinkedList();
+        list1.add(1);
+        assertEquals(1, list1.get(0));
+        list1.add(0, 5);
+        assertEquals(5, list1.get(0));
     }
 
 
